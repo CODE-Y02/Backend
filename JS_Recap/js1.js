@@ -59,3 +59,7 @@ const hobbies = ["gaming", "singing"];
 // const copiedArr = hobbies.slice();
 const copiedArr = [...hobbies]; // spread operator
 console.log(copiedArr);
+
+//copied obj using spread
+const copiedPersonObj = { ...person };
+console.log(copiedPersonObj);
