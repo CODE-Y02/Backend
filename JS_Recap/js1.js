@@ -30,7 +30,8 @@
 const person = {
   name: "yatharth",
   age: 24,
-  greet: () => {
+  //this refer to global obj in arrrow fun therefore sol 1 is using function
+  greet: function () {
     console.log("hi, i am " + this.name);
   },
 };
