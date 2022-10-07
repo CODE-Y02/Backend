@@ -38,3 +38,15 @@ const person = {
 
 console.log(person);
 person.greet();
+
+// array methods
+
+const hobbies = ["gaming", "singing"];
+//for of
+for (const hobby of hobbies) {
+  console.log(hobby);
+}
+
+//map --> dont modify new arry but return new array
+console.log(hobbies.map((hobby) => "hobby : " + hobby));
+console.log(hobbies);
