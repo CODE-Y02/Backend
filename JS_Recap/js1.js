@@ -58,8 +58,15 @@ const hobbies = ["gaming", "singing"];
 // ways to copy array
 // const copiedArr = hobbies.slice();
 const copiedArr = [...hobbies]; // spread operator
-console.log(copiedArr);
+// console.log(copiedArr);
 
 //copied obj using spread
 const copiedPersonObj = { ...person };
-console.log(copiedPersonObj);
+// console.log(copiedPersonObj);
+
+// rest
+const toArr = (...Nargs) => {
+  return Nargs;
+};
+
+console.log(toArr(1, 2, 3, 4, 5, 8, 9, "d"));
