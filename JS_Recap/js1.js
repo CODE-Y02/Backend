@@ -43,10 +43,19 @@ person.greet();
 
 const hobbies = ["gaming", "singing"];
 //for of
-for (const hobby of hobbies) {
-  console.log(hobby);
-}
+// for (const hobby of hobbies) {
+//   console.log(hobby);
+// }
 
 //map --> dont modify new arry but return new array
-console.log(hobbies.map((hobby) => "hobby : " + hobby));
-console.log(hobbies);
+// console.log(hobbies.map((hobby) => "hobby : " + hobby));
+// console.log(hobbies);
+
+// hobbies.push("coading");
+// console.log(hobbies);
+//immutability --> we always follow copy then edit in ref data type to avoid unnecessary errors
+
+// ways to copy array
+// const copiedArr = hobbies.slice();
+const copiedArr = [...hobbies]; // spread operator
+console.log(copiedArr);
