@@ -1,9 +1,9 @@
-let name = "yatharth";
+const name = "yatharth";
 // console.log(name);
 
 let age = 24;
 const hasHobbies = true;
-
+// name = "code_y";   --> type error cannot reassign to const
 age = 23;
 
 function summarizeUser(userName, userAge, userHasHobby) {
