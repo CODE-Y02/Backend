@@ -1,8 +1,10 @@
-var name = "yatharth";
+let name = "yatharth";
 // console.log(name);
 
-var age = 24;
-var hasHobbies = true;
+let age = 24;
+const hasHobbies = true;
+
+age = 23;
 
 function summarizeUser(userName, userAge, userHasHobby) {
   return (
