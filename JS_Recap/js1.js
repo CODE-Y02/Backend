@@ -6,7 +6,7 @@ const hasHobbies = true;
 // name = "code_y";   --> type error cannot reassign to const
 age = 23;
 
-function summarizeUser(userName, userAge, userHasHobby) {
+const summarizeUser = function (userName, userAge, userHasHobby) {
   return (
     "Name is " +
     userName +
@@ -15,6 +15,6 @@ function summarizeUser(userName, userAge, userHasHobby) {
     " and the user has hobbies : " +
     userHasHobby
   );
-}
+};
 
 console.log(summarizeUser(name, age, hasHobbies));
