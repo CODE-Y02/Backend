@@ -6,7 +6,8 @@ const http = require("http");
 
 
 const server = http.createServer((req, res) => {
-    console.log(req)
+    console.log(req.url, req.method, req.headers)
+    // process.exit(); // used to de attach event 
 });
-
+// create server acts as event listner 
 server.listen(3000)  
