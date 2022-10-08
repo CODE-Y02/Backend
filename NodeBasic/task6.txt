@@ -1,0 +1,62 @@
+Explain how does the internet work in your own words
+    internet is just a collection of computers sending and receiving data from each other ;
+    for ex: -> when we type google.com on browser your pc will send request assume like post deliver by postman and receiver name is google.com 
+    now postman will go to address of google i.e IP address.
+    then google will send response to your post based on certain condidits or by doing some task , now postman will go to your address and tell you response of google;
+
+    this is how internet works you can only see response send by google you cannot see what operations he has performed 
+
+What are the core modules of node js?
+    core modules are functionality of node that is hidden by default those modules provieds more functionality to us , we cannot use core modules directly but we can import them as they required using "require("module-name")"
+
+Explain the use of each one of them in detail.
+    http --> 	http module includes classes, methods   and events to create Node.js http server.
+
+    url  -->  url module includes methods for URL resolution and parsing.
+
+    path --> path module includes methods to deal with file paths.
+
+    fs --> fs module includes classes, methods, and events to work with file I/O.
+
+    os -->  provides information about the operating system.
+
+    assets --> set of assertion functions useful for testing.
+
+    process --> provides information and control about the current Node.js process.
+
+    querystring --> utility used for parsing and formatting URL query strings.
+
+
+What are relative path and absolute path? How to define them?
+     lets say my current working direcotery is 
+     c:/desktop/sharpnener/backend
+
+     i want to go to /backend/nodeJS
+     then relative path will be "/nodeJS"
+
+     where as absolute path will be  " c:/desktop/sharpnener/backend/nodeJS"
+
+     relative --> next to current direcotery
+     absolute --> from root to required direcotery
+
+What does createServer do?
+    it turns computer into http server
+    const server = createServer(requestListner);
+    //requestListner listen to request and do something and send response
+    requestListner((req,res)=>{
+        // do something with req then send response
+    })
+
+    server.listen(url or port or ip address)
+
+What are anonymous functions?
+ function with no name is anonymous function 
+ and it can only be used as callbacks 
+ and cant used directly
+
+What do you think server.listens exactly do?Why do we need it?
+    server.listen() is like event listner it attach listner to specified port or path on server ;
+    and whenever request is made it listen to it ;
+
+
+
