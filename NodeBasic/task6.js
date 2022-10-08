@@ -2,6 +2,9 @@
 
 const http = require('http');
 
-http.createServer((req, res) => {
+const server = http.createServer((req, res) => {
     console.log("Yatharth ")
-}).listen(4000)
+})
+
+//Call the server from the browser and your name would get printed.
+server.listen(4000)
