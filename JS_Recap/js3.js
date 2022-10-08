@@ -1,18 +1,26 @@
 //async code and promises
 
-const fetchData = (callBack) => {
-  setTimeout(() => {
-    callBack("Done !");
-  }, 1500);
+const fetchData = () => {
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Done !");
+    }, 1500);
+  });
+
+  return promise; // promise is return immediately before settimeout is executed
 };
 
 setTimeout(() => {
   console.log("Timer is done");
 
-  //fetchdata expect function as arg
-  fetchData((text) => {
-    console.log(text);
-  });
+  fetchData()
+    .then((text) => {
+      console.log(text);
+      return fetchData();
+    })
+    .then((text2) => {
+      console.log(text2);
+    });
 }, 2000);
 
 console.log("hello!");
