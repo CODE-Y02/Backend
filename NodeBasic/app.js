@@ -16,12 +16,31 @@ const server = http.createServer((req, res) => {
         res.write("<html>");
         res.write("<head><title>My first Site</title></head>")
         res.write("<body><form action='/message' method='POST'><input type='text' name='message'> <button type = 'submit'>Submit</button></form></body>")
+        //name --> acts as key for data send
         res.write("</html>")
         return res.end()
     }
     //redirecting
     if(url=== "/message"  && method === 'POST'){
-        fs.writeFileSync('message.txt','DUMMY');
+        const body = [];  // collecting buffer of chunks in array 
+
+        // we will push buffer of chunks from data stream into body arr
+        req.on('data',(chunk)=>{
+            console.log(chunk)
+            body.push(chunk);
+        });
+        
+        //when data stream end starting parsing buffer
+        req.on('end',()=>{
+            const parseBody = Buffer.concat(body).toString();
+            // console.log(parseBody)
+
+            //split parsebody str into array at = sign and sevve msg i.e idx 1
+            const message = parseBody.split('=')[1];
+            fs.writeFileSync('message.txt',message);
+        })
+
+        
         res.statusCode= 302;
         res.setHeader('Location','/')
         return res.end()
