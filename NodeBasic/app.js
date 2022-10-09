@@ -39,11 +39,12 @@ const server = http.createServer((req, res) => {
 
       //split parsebody str into array at = sign and sevve msg i.e idx 1
       const message = parseBody.split("=")[1];
-      fs.writeFileSync("message.txt", message);
-
-      res.statusCode = 302;
-      res.setHeader("Location", "/");
-      return res.end();
+      fs.writeFile("message.txt", message, (err) => {
+        //writefile do not block code execution
+        res.statusCode = 302;
+        res.setHeader("Location", "/");
+        return res.end();
+      });
     });
   }
 
