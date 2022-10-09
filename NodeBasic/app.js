@@ -41,9 +41,11 @@ const server = http.createServer((req, res) => {
         })
 
         
+        // this will excute before res.on
         res.statusCode= 302;
         res.setHeader('Location','/')
         return res.end()
+        // this will excute before res.on 
     }
 
     //creating response
