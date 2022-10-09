@@ -50,7 +50,18 @@ const requestHandler = (req, res) => {
   res.end();
 };
 
-// way1 to export
+// way2 to export
 
 // we can export multiple thing as obj
-module.exports = requestHandler;
+// module.exports = {
+//   handler: requestHandler,
+//   someText: " Some hard coded text",
+// };
+
+//alternative way
+// module.exports.handler = requestHandler;
+// module.exports.someText = " Some hard coded text";
+
+//short cut for above code
+exports.handler = requestHandler;
+exports.someText = " Some hard coded text";
