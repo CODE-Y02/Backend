@@ -33,7 +33,7 @@ const server = http.createServer((req, res) => {
     });
 
     //when data stream end starting parsing buffer
-    req.on("end", () => {
+    return req.on("end", () => {
       const parseBody = Buffer.concat(body).toString();
       // console.log(parseBody)
 
