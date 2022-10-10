@@ -15,6 +15,10 @@ app.use((req, res, next) => {
   console.log("In the Another middlewere");
 
   res.send("<html><h1>Hello from express</h1></html>");
+  // this give content type text html
+
+  // res.send({ hello: "Yatharth" });
+  // gives content type applicatiom/json
 });
 
 // const server = http.createServer(app);
