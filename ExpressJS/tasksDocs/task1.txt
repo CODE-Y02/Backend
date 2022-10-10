@@ -1,0 +1,49 @@
+Why are we using Express JS ? Any reasons?
+    to handling response , parsing request and handling routing code we write in vanilla node js is complex .
+
+    to solve this issue we use Express it automatically set headers as per response type and also sets routes very easily
+
+What are middlewares ?
+    middlewares used to modify request and response like any kind of auth process ,etc
+    middlewares are function and can be used as callback inside routes and
+    by using expressApp.use(middlewareFunction)
+    
+What is next used for.
+    middlewares used to rest modifid response 
+    now in middlewareFunction we have next as args that means proceed to next middlewares or code
+
+    note :- next send  response that set headers if we are sending response we cannot use next(); 
+
+What is res.send used for?
+    it is used to send response in middlewares
+
+If i do res.send('<h1> hello to node js </h1>') . What will be the content-type header equal to.
+    it shoud be text/html , but i think theres some bug in lagest express we need to send html first otherwise it will not set content type amd gives status code 304 
+
+
+If I do res.send( { key1: value }) . What will be the content-type header equal to.
+    its application/json 
+    its most common type of response used in software dev after text 
+
+
+What does app.listen(3000) do behind the scenes ?
+    it crestes server and with app as callback and set listen for server to given port
+
+    server = http.createServer(app);
+    server.listen(3000);
+
+    where did it get http > its already imported in express by default 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
