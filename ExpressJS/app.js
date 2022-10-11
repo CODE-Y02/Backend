@@ -16,7 +16,8 @@ app.use("/add-product", (req, res, next) => {
 });
 
 //product
-app.use("/product", (req, res, next) => {
+//if we use "use" it will fire for both post and get but we can use "post" / "get" instead
+app.post("/product", (req, res, next) => {
   console.log(req.body);
   res.redirect("/");
 });
