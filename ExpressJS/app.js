@@ -19,4 +19,13 @@ app.use(adminRoutes);
 // shop route --> order oof route doesnot matter if we are not using 'use' in route file  maters
 app.use(shopRoutes);
 
+// adding 404
+app.use("/", (req, res, next) => {
+  // res.status(404);
+  // res.send(`<h1>Page  NOT Found</h1>`);
+
+  //can also be written as
+  res.status(404).send(`<h1>Page  NOT Found</h1>`);
+});
+
 app.listen(3000);
