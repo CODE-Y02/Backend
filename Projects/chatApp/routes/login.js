@@ -7,7 +7,6 @@ router.get("/login", (req, res, next) => {
   res.send(`
     <form
       action="/"
-      method="post"
       onsubmit='localStorage.setItem("username", document.getElementById("username").value)'
     >
       <label for="username">Enter User Name</label>
