@@ -17,8 +17,9 @@ app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just par
 // we can use common first part of path here
 app.use("/admin", adminRoutes);
 
-// shop route --> order oof route doesnot matter if we are not using 'use' in route file  maters
-app.use(shopRoutes);
+// shop route --> order of route doesnot matter if we are not using 'use' in route file  maters
+// Now make a /shop route for all the routes that call the shop.js file.
+app.use("/shop", shopRoutes);
 
 // adding 404
 app.use("/", (req, res, next) => {
