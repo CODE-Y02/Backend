@@ -11,7 +11,16 @@ app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just par
 // add product
 app.use("/add-product", (req, res, next) => {
   res.send(
-    `<form action="/product" method="post"><input type="text" name="title" /><button type="submit">Add</button></form>`
+    `<form action="/product" method="post">
+    <label for="product-title">Product Name</label>
+    <input type="text" name="title" id="product-title" />
+    <label for="product-size">Size</label>
+    <input type="number" name="size" id="product-size" /><button
+      type="submit"
+    >
+      Add
+    </button>
+  </form>`
   );
 });
 
@@ -28,3 +37,13 @@ app.use("/", (req, res, next) => {
 });
 
 app.listen(3000);
+
+//Task 3
+/**
+ * Create the /add-product route which shows a form. Once user has filled , console log it after parsing it using bodyparser.
+What is the body parser used for?
+  to parse request i.e to convert encoded request into readable useful format
+  
+Now add one more input tag in the add product page so that user can input size of the product.
+When the user clicks on submit parse both the input tags and show it in console.
+ */
