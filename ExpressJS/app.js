@@ -1,6 +1,10 @@
+const bodyParser = require("body-parser");
 const express = require("express");
 
 const app = express();
+
+//parse req before any middle ware
+app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just parse encoded url
 
 //middleware
 
@@ -13,7 +17,7 @@ app.use("/add-product", (req, res, next) => {
 
 //product
 app.use("/product", (req, res, next) => {
-  console.log(req);
+  console.log(req.body);
   res.redirect("/");
 });
 
