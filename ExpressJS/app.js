@@ -14,7 +14,8 @@ app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just par
 
 // using router
 //admin route
-app.use(adminRoutes);
+// we can use common first part of path here
+app.use("/admin", adminRoutes);
 
 // shop route --> order oof route doesnot matter if we are not using 'use' in route file  maters
 app.use(shopRoutes);
