@@ -1,25 +1,25 @@
-// const http = require("http");
-
 const express = require("express");
 
-//express app
 const app = express();
 
-//middle ware
+//middleware
 
-app.use("/", (req, res, next) => {
-  console.log("MiddleWare 1 always runs");
-  next();
-});
-
+// add product
 app.use("/add-product", (req, res, next) => {
-  console.log("MiddleWare 2");
-  res.send("<h1>add-product</h1>");
+  res.send(
+    `<form action="/product" method="post"><input type="text" name="title" /><button type="submit">Add</button></form>`
+  );
 });
 
+//product
+app.use("/product", (req, res, next) => {
+  console.log(req);
+  res.redirect("/");
+});
+
+//default
 app.use("/", (req, res, next) => {
-  console.log("MiddleWare 3");
-  res.send("<h1>Hello from express</h1>");
+  res.send(`<h1>hello From Express</h1>`);
 });
 
 app.listen(3000);
