@@ -1,6 +1,8 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 
+const path = require("path");
+
 //import admin routes
 const adminRoutes = require("./routes/admin.js");
 
@@ -18,7 +20,6 @@ app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just par
 app.use("/admin", adminRoutes);
 
 // shop route --> order of route doesnot matter if we are not using 'use' in route file  maters
-
 app.use(shopRoutes);
 
 // adding 404
@@ -27,7 +28,7 @@ app.use("/", (req, res, next) => {
   // res.send(`<h1>Page  NOT Found</h1>`);
 
   //can also be written as
-  res.status(404).send(`<h1>Page  NOT Found</h1>`);
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 app.listen(3000);
