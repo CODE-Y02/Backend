@@ -13,13 +13,13 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just parse encoded url
 
 // using router
-//admin route
+// add-product route
 // we can use common first part of path here
-app.use("/admin", adminRoutes);
+app.use(adminRoutes);
 
 // shop route --> order of route doesnot matter if we are not using 'use' in route file  maters
-// Now make a /shop route for all the routes that call the shop.js file.
-app.use("/shop", shopRoutes);
+
+app.use(shopRoutes);
 
 // adding 404
 app.use("/", (req, res, next) => {

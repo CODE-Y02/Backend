@@ -1,5 +1,6 @@
 //contains admin routs logic that only admin can visit
 
+const path = require("path");
 const express = require("express");
 
 // we can name router anything
@@ -7,25 +8,14 @@ const router = express.Router();
 
 //when we have different method we can use same path url
 
-// /admin/add-product   ==> GET
+// /add-product   ==> GET
 router.get("/add-product", (req, res, next) => {
-  res.send(
-    `<form action="/admin/add-product" method="post">
-      <label for="product-title">Product Name</label>
-      <input type="text" name="title" id="product-title" />
-      <label for="product-size">Size</label>
-      <input type="number" name="size" id="product-size" /><button
-        type="submit"
-      >
-        Add
-      </button>
-    </form>`
-  );
+  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
 });
 
-// /admin/add-product   ==> POST
+// /add-product   ==> POST
 router.post("/add-product", (req, res, next) => {
-  console.log(req.body);
+  // console.log(req.body);
   res.redirect("/shop");
 });
 
