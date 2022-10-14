@@ -11,6 +11,9 @@ const shopRoutes = require("./routes/shop");
 
 const app = express();
 
+// serving static pages
+app.use(express.static(path.join(__dirname, "public")));
+
 //parse req before any middle ware
 app.use(bodyParser.urlencoded({ extended: false })); //this url encoded just parse encoded url
 
