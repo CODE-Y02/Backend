@@ -1,28 +1,27 @@
 const products = [];
 
 exports.getAddProduct = (req, res, next) => {
-  res.render("add-product", {
-    pageTitle: "Add Product",
-    path: "/admin/add-product",
+  res.render('add-product', {
+    pageTitle: 'Add Product',
+    path: '/admin/add-product',
     formsCSS: true,
     productCSS: true,
-    activeAddProduct: true,
+    activeAddProduct: true
   });
 };
-// same things module.exports = getAddProduct
 
-module.exports.postAddProduct = (req, res, next) => {
+exports.postAddProduct = (req, res, next) => {
   products.push({ title: req.body.title });
-  res.redirect("/");
+  res.redirect('/');
 };
 
-exports.getProduct = (req, res, next) => {
-  res.render("shop", {
+exports.getProducts = (req, res, next) => {
+  res.render('shop', {
     prods: products,
-    pageTitle: "Shop",
-    path: "/",
+    pageTitle: 'Shop',
+    path: '/',
     hasProducts: products.length > 0,
     activeShop: true,
-    productCSS: true,
+    productCSS: true
   });
 };
