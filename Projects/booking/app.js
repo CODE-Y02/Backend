@@ -3,6 +3,11 @@ const path = require("path");
 
 const rootDir = require("./utils/rootDir");
 
+//import controller
+const successController = require("./controller/success");
+const contactUsController = require("./controller/contactUs.js");
+const errorController = require("./controller/error");
+
 const app = express();
 
 app.use(express.static(path.join(rootDir, "public")));
@@ -15,18 +20,12 @@ app.get("/", (req, res) => {
 });
 
 // contact us
-app.get("/contact", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "contact.html"));
-});
+app.get("/contact", contactUsController.contactUsController);
 
 //message --> /success
-app.get("/success", (req, res) => {
-  res.sendFile(path.join(rootDir, "views", "contact_Success.html"));
-});
+app.get("/success", successController);
 
 //404
-app.use("/", (req, res) => {
-  res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
-});
+app.use("/", errorController);
 
 app.listen(3000);
