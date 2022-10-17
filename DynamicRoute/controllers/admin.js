@@ -31,9 +31,27 @@ exports.getEditProduct = (req, res, next) => {
       pageTitle: "Edit Product",
       path: "/admin/edit-product",
       editing: editMode,
-      editingProduct: product,
+      product: product,
     });
   });
+};
+
+exports.postEditProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  //updated details
+  const title = req.body.title;
+  const imageUrl = req.body.imageUrl;
+  const price = req.body.price;
+  const description = req.body.description;
+  const updatedProduct = new Product(
+    title,
+    imageUrl,
+    description,
+    price,
+    prodId
+  );
+  updatedProduct.save();
+  res.redirect("/admin/products");
 };
 
 exports.getProducts = (req, res, next) => {
