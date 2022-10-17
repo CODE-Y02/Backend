@@ -55,4 +55,29 @@ module.exports = class Product {
       cb(product);
     });
   }
+
+  static deleteProduct(id, cb) {
+    getProductsFromFile((products) => {
+      //in this array filter it by id
+      products = products.filter((productObj) => productObj.id !== id);
+      // in alternate approach we can use for loop
+      // let remaningProd = [];
+      // for (let i = 0; i < products.length; i++) {
+      //   if (products[i].id !== id) remaningProd.push(products[i]);
+      // }
+
+      // console.log(remaningProd);
+
+      // console.log("clicked del", id);
+
+      //save remaning product
+      fs.writeFile(p, JSON.stringify(products), (err) => {
+        if (err) console.log("err in del product", err);
+        console.log("in dele prod", err);
+
+        //once saved in file call cb
+        cb();
+      });
+    });
+  }
 };
