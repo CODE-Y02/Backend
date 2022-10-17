@@ -56,7 +56,7 @@ module.exports = class Product {
     });
   }
 
-  static deleteProduct(id, cb) {
+  static deleteproductbyID(id, cb) {
     getProductsFromFile((products) => {
       //in this array filter it by id
       products = products.filter((productObj) => productObj.id !== id);
