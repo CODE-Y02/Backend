@@ -16,9 +16,19 @@ exports.getProducts = (req, res, next) => {
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   // console.log(prodId);
+
+  //  method 1 : using findAll with where synatx
+  // Product.findAll({
+  //   where: {
+  //     id: prodId,
+  //   },
+  // })
+
+  // method 2 : usimg find by id or findByPK
   Product.findByPk(prodId)
     .then((product) => {
-      // console.log(product);
+      console.log(product);
+      // product = product[0];   // if use syntax of findAll
       res.render("shop/product-detail", {
         product: product,
         pageTitle: product.title,
