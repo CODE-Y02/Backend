@@ -3,10 +3,10 @@ const Cart = require("../models/cart");
 
 exports.getProducts = (req, res, next) => {
   Product.fetchAll().then(([rows]) => {
-    res.render("shop/index", {
+    res.render("shop/product-list", {
       prods: rows,
-      pageTitle: "Shop",
-      path: "/",
+      pageTitle: "All Products",
+      path: "/products",
     });
   });
 };
