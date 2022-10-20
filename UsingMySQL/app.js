@@ -5,6 +5,8 @@ const bodyParser = require("body-parser");
 
 const errorController = require("./controllers/error");
 
+const sequelize = require("./util/database");
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -20,5 +22,17 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 app.use(errorController.get404);
+
+// sequelize can create table for models created using it during server start , it will create table only when its NOT Exist in DB
+// it also automatically defines relationship
+
+sequelize
+  .sync()
+  .then((result) => {
+    // console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.listen(3000);

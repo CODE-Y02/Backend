@@ -2,10 +2,10 @@ const Product = require("../models/product");
 const Cart = require("../models/cart");
 
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll()
-    .then(([rows]) => {
+  Product.findAll()
+    .then((products) => {
       res.render("shop/product-list", {
-        prods: rows,
+        prods: products,
         pageTitle: "All Products",
         path: "/products",
       });
@@ -16,9 +16,8 @@ exports.getProducts = (req, res, next) => {
 exports.getProduct = (req, res, next) => {
   const prodId = req.params.productId;
   // console.log(prodId);
-  Product.findById(prodId)
-    .then(([rows]) => {
-      let product = rows[0];
+  Product.findByPk(prodId)
+    .then((product) => {
       // console.log(product);
       res.render("shop/product-detail", {
         product: product,
@@ -31,9 +30,9 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  Product.fetchAll()
-    .then((results) => {
-      let products = results[0]; // rows in db produvts table
+  Product.findAll()
+    .then((products) => {
+      // console.log(results[0]);
       res.render("shop/index", {
         prods: products,
         pageTitle: "Shop",
@@ -55,7 +54,7 @@ exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
   // console.log(prodId);
   //find product in products is in stock if yess then add to cart
-  Product.findById(prodId).then(([product]) => {
+  Product.findByPk(prodId).then((product) => {
     Cart.addProduct(prodId, product.price);
     res.redirect("/cart");
   });
