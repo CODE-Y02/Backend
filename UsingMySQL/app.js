@@ -22,6 +22,15 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
+// setup to use user using middleware
+app.use((req, res, next) => {
+  User.findByPk(1).then((user) => {
+    req.user = user; // user --> is seduilize obj with sequalize methods attached to it with users info
+    // we can add req but SHOULD NOT EDIT EXISTING FIELDS  EVEN THOUGH ITS POSSIBLE
+    next();
+  });
+});
+
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
@@ -34,12 +43,24 @@ Product.belongsTo(User, { constraints: true, onDelete: "CASCADE" });
 User.hasMany(Product);
 
 sequelize
-  .sync({ force: true })
+  // .sync({ force: true })
+  .sync()
   .then((result) => {
     // console.log(result);
+    return User.findByPk(1);
+  })
+  .then((user) => {
+    if (!user) {
+      User.create({ name: "dummy", email: "test@test.com" });
+    }
+
+    return user;
+  })
+  .then((user) => {
+    console.log(user);
+
+    app.listen(3000);
   })
   .catch((err) => {
     console.log(err);
   });
-
-app.listen(3000);
