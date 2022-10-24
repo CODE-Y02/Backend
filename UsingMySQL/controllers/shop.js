@@ -78,12 +78,42 @@ exports.getCart = (req, res, next) => {
 exports.postCart = (req, res, next) => {
   //get prodID
   const prodId = req.body.productId;
-  // console.log(prodId);
-  //find product in products is in stock if yess then add to cart
-  Product.findByPk(prodId).then((product) => {
-    Cart.addProduct(prodId, product.price);
-    res.redirect("/cart");
-  });
+  let fetchedCart;
+  req.user
+    .getCart()
+    .then((cart) => {
+      fetchedCart = cart;
+      return cart.getProducts({ where: { id: prodId } });
+    })
+    .then((products) => {
+      let product;
+      // if cart already has product
+      if (products.length > 0) {
+        product = products[0];
+      }
+
+      let newQuantity = 1;
+      if (product) {
+        // if cart already has product then increase quantity
+      }
+
+      // new product :  not in cart yet
+      return Product.findByPk(prodId)
+        .then((product) => {
+          return fetchedCart.addProduct(product, {
+            through: { quantity: newQuantity },
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .then(() => {
+      res.redirect("/cart");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 exports.getOrders = (req, res, next) => {
