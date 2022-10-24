@@ -1,6 +1,5 @@
 const Sequelize = require("sequelize");
 
-//import Sequelize db pool
 const sequelize = require("../util/database");
 
 // create new model
