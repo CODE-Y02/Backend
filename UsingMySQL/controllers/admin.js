@@ -38,9 +38,13 @@ exports.getEditProduct = (req, res, next) => {
   }
   //geting product info
   const prodId = req.params.productId;
-  Product.findByPk(prodId)
-    .then((product) => {
+
+  req.user
+    .getProducts({ where: { id: prodId } }) // here we get array of products even we have single prod
+    // Product.findByPk(prodId)
+    .then((products) => {
       // console.log(product);
+      const product = products[0];
       res.render("admin/edit-product", {
         pageTitle: "Edit Product",
         path: "/admin/edit-product",
@@ -78,7 +82,9 @@ exports.postEditProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.findAll()
+  // Product.findAll()
+  req.user
+    .getProducts()
     .then((products) => {
       res.render("admin/products", {
         prods: products,
