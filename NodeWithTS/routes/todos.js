@@ -31,7 +31,12 @@ router.put("/todo/:todoId", (req, res, next) => {
     res.status(404).json({ message: " Item Not fount for given Id" });
 });
 router.delete("/todo/:todoId", (req, res, next) => {
+    let oldLen = todos.length;
     todos = todos.filter((eachTodo) => eachTodo.id !== req.params.todoId);
+    if (todos.length === oldLen) {
+        //no ele is removed
+        return res.status(404).json({ message: " Item Not fount for given Id" });
+    }
     res.status(200).json({ message: "Item delated successfully", todos: todos });
 });
 exports.default = router;
