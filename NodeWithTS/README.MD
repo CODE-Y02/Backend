@@ -150,3 +150,25 @@
 > we can have multiple named export but single default export per module or file
 
 >
+
+---
+
+---
+
+## What is type casting
+
+> Type casting is type conversion
+
+> If TS has infered any variable value as any but we know its value then we can set its value
+
+---
+
+---
+
+## What is the need of RequestBody and RequestParams?
+
+> TS dont know whats inside params or body of request .
+
+> To define structure of body or request we uses type feature to crate user defined datatypes by combining deffere data types.
+
+> This hust creates strucrure of of body and params and whats inside it .
